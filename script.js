@@ -19,18 +19,24 @@ const apiKey = '06f7b22ab6db2af2ef190fa2d909ab57'
 
 searchBtn.addEventListener('click',() => {
     if(cityInput.value.trim() != ''){
-      updateWeatherInfo(cityInput.value)
-      cityInput.value = ''
-      cityInput.blur
+      alert('Enter city name')
+      return
     }
+    updateWeatherInfo(cityInput.value)
+      cityInput.value = ''
+      cityInput.blur()
 })
 
 cityInput.addEventListener('keydown',(event) => {
-    if(event.key == 'Enter' && cityInput.value.trim() != ''){
-      
-      updateWeatherInfo(cityInput.value)
-      cityInput.value = ''
-      cityInput.blur
+    if(event.key == 'Enter'){
+        if(cityInput.value.trim() == ''){
+            alert('Enter city name')
+            return
+        }
+
+        updateWeatherInfo(cityInput.value)
+        cityInput.value = ''
+        cityInput.blur()
     }
 })
 
@@ -48,7 +54,7 @@ function getWeatherIcon(id) {
    if(id <= 232) return 'thunderstorm.png'
    if(id <= 622) return 'snow.png'
    if(id <= 781) return 'atmosphere.png'
-   if(id <= 800) return 'clr weather.png'
+   if(id <= 800) return 'clear.png'
    else return 'sunny.png'
 }
 
@@ -63,6 +69,7 @@ function getCurrentDate() {
 }
 
 async function updateWeatherInfo(city) {
+
   const weatherData = await getFetchData('weather', city)
 
   if(weatherData.cod != 200){
@@ -138,3 +145,5 @@ function showDisplaySection(section) {
 
   section.style.display = 'flex'
 }
+
+updateWeatherInfo('Delhi')

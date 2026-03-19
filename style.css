@@ -40,6 +40,7 @@ body::before {
    border-radius: 12px;
    backdrop-filter: blur(50px);
    padding: 20px;
+   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 
@@ -67,6 +68,8 @@ body::before {
 
 .city-input:focus {
    border: 3px solid rgb(0, 0, 0 , 0.15);
+   outline: none;
+   
 }
 
 .search-btn {
@@ -84,6 +87,7 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  animation: fadeIn 0.5s ease;
 }
 
 .location-date-container {
@@ -91,6 +95,7 @@ body::before {
    justify-content: space-between;
    align-items: center;
 }
+
 
 .location{
    display: flex;
@@ -196,4 +201,17 @@ body::before {
    text-align: center;
    gap: 15px;
    margin-top: 25%;
+}
+
+.temp-txt {
+  font-size: 38px;
+}
+
+.search-btn:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
